@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package com.lyh.protocol;
+option java_package = "com.lyh.protocol";
+
+enum PbAoiEntityType
+{
+	//Notice:枚举型在其他proto中作为字段时，必须赋予默认值，否则客户端编译报错。eg: PbAoiEntityType type = 2 [default = None];// 释放者类型
+	None = 0;//none
+
+}
+
+
+
+
+//桌子当前状态
+message TableStatusData{
+	int32 status=1;//桌子状态(1-4)
+	int64 endTime=2;//还有多少毫秒结束这个状态
+
+}
+//桌子上的玩家数据
+message TablePlayerData{
+	string userId=1;//玩家id
+	int32 seat=2;//玩家座位
+	string name=3;//玩家名字
+	string money=4;//玩家金币
+	int32 sex=5;//性别(0-男1-女
+	int32 head=6;//头像
+	string breakEvenMoney=7;//最终盈亏
+	
+}
+//下注总数与自己的下注数据
+message BetMoneysData{
+	string totalBetMoney=1;//下注总数
+	string myBetMoey=2;//我的下注(为-1时,这个值不起作用)
+	int32 pos=3;//方位(闲对=0,庄对=1,和=2,闲=3,庄=4)
+	repeated TablePlayerData seatBetMoney=4;//座位上的人下注总量
+}
+
+//已下注数据列表
+message BetMoneysListData{
+  repeated BetMoneysData betList=1;//下注列表
+  repeated string posTotalBetMoney=2;//分别5个方位的总下注0=闲对,1=闲家,2=和,3=庄,4=庄对
+}
+
+//发牌数据
+message SendCardData{
+	CardData leftCardList=1;//红方数据
+	CardData rightCardList=2;//黑方数据
+}
+
+//输赢结果数据
+message RoundResultData{
+	string myWinMoney=1;//我的输赢
+	string money=2;//账户剩余金币量
+	int32 whoWin=3;///1=红方，2=黑方
+	int32 luckType=4;//幸运一击，0=无
+	
+}
+
+//下注显示数据
+message BetMoneyShowData{
+	int32 pos=1;//位置
+	string betMoney=2;//下注的钱
+}
+
+//筹码面值和数量
+message JettonData{
+	string jettonVal=1;//筹码面额
+	int32 jettonNum=2;//筹码数量
+	int32 area=3;//区域
+}
+
+//游戏输赢历史记录对象
+message HistoryRecordData{
+	int32 red=1;//红 0-输 1-赢
+	int32 black=2;//黑 0-输 1-赢
+	int32 lucky=3;//幸运方 0-输 大于0是幸运一击的类型
+	int32 luckyType=4;//幸运方类型
+	
+	
+}
+//
+message CardData{
+
+	repeated int32 cardList=1 [packed=true];//牌值列表
+	int32 cardType=2;//牌型
+}
+
+
+
+

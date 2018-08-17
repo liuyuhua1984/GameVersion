@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "btn_barrage_open",
+    "texture": "022NNJ+E9NxYGp2kfzPrAz",
+    "rect": [
+      0,
+      0,
+      114,
+      60
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      114,
+      60
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "img_xiaolabakuang",
+    "texture": "59YvX8JgFK0rEz3sm9MADI",
+    "rect": [
+      0,
+      0,
+      502,
+      47
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      502,
+      47
+    ]
+  }
+}

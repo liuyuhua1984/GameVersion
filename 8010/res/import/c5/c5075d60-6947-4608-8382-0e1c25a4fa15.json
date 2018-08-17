@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "img_voice_bg",
+    "texture": "64GhPaqoZNy5OIZim67nNa",
+    "rect": [
+      0,
+      0,
+      416,
+      366
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      416,
+      366
+    ]
+  }
+}

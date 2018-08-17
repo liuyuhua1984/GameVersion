@@ -1,0 +1,24 @@
+{
+  "__type__": "cc.SpriteAtlas",
+  "_name": "card_type.plist",
+  "_spriteFrames": {
+    "type_1": {
+      "__uuid__": "3eq3GPugJDkoL+Cvj2EoPx"
+    },
+    "type_2": {
+      "__uuid__": "7caqsoVK1CAYiPvsEh880i"
+    },
+    "type_3": {
+      "__uuid__": "b3dQRj5TpDAI8vyPhJ+9b8"
+    },
+    "type_4": {
+      "__uuid__": "dabmAc3yhJn6OdgZphnBH4"
+    },
+    "type_5": {
+      "__uuid__": "9f+JfV1odPOYBILOefVufy"
+    },
+    "type_6": {
+      "__uuid__": "56rlYtPAJDp6dIDMSW1gZF"
+    }
+  }
+}

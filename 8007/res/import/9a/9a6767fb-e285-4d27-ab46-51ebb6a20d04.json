@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "img_bet_2",
+    "texture": "12Czhf7hBClKC+i6sS91J5",
+    "rect": [
+      0,
+      0,
+      83,
+      86
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      83,
+      86
+    ]
+  }
+}

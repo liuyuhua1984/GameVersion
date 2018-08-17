@@ -1,0 +1,155 @@
+﻿syntax = "proto3";
+package com.lyh.protocol;
+option java_package = "com.lyh.protocol.game.room.redblack";
+import "RedBlackPublicData.proto";
+//C_S_REDBLACK_JOIN_TABLE_REQUEST=0x020801;//玩家请求加入桌子
+message RedBlackJoinTableRequest{
+	 string roomCode=1;//房间code
+	 string userId=2;//用户id
+}
+//S_C_REDBLACK_JOIN_TABLE_RESPONSE=0x020802;//返回加入桌子
+message RedBlackJoinTableResponse{
+	int32 tableId=1;//桌子id
+	TableStatusData status=2;//桌子状态
+	repeated string jettons=3;//筹码组
+	string minBetMoney=4;//每局最小下注
+	string maxBetMoney=5;//每局最大下注
+	BetMoneysListData betListsData=6;//桌子上已下注的筹码
+	SendCardData cardData=7;//已下发的牌
+	RoundResultData roundResult=8;//输赢结果
+	string minEnterMoney=9;//入场金额
+	int32 isContinueBetMoney=10;//已经续押为1
+	repeated HistoryRecordData historyRecord=11;//游戏历史记录
+	TablePlayerData winMaxUserInfo=12;//本局赢的最多的玩家
+	string redRatio=13;//游戏历史记录开红赢的百分比
+	string blackRatio=14;//游戏历史记录开黑赢的百分比
+	repeated int32 stage=15 [packed=true];//3个方位的输赢情况 0 红 1 黑 2 幸运方    0 是输  1是赢
+	repeated TablePlayerData seatPlayerList=16;//桌子上的玩家数据
+	
+}
+
+//S_C_REDBLACK_TABLE_SEAT_PLAYER_INFO_LIST_RESPONSE=0x020803;//座位上玩家的信息(广播给自己)
+message RedBlackTableSeatPlayerInfoListResponse{
+	repeated TablePlayerData playerList=1;//座位上的玩家(没有也有发
+}
+
+//S_C_REDBLACK_TABLE_PLAYER_INFO_RESPONSE=0x020804;//加入桌子的玩家信息
+message RedBlackTablePlayerInfoResponse{
+	TablePlayerData playerInfo=1;//玩家数据
+}
+
+//S_C_REDBLACK_UPDATE_PLAYER_NUM_RESPONSE=0x020805;//更新玩家数量
+message RedBlackUpdataPlayerNumResponse{
+	int32 num=1;//房间内的玩家数量
+}
+
+
+//C_S_REDBLACK_SEAT_DOWN_REQUEST=0x020809;//申请坐下和离开
+message RedBlackSeatDownRequest{
+	int32 pos=1;//位置
+	int32 type=2;//0=坐下,1=离开
+}
+
+//S_C_REDBLACK_SEAT_DOWN_RESPONSE=0x020810;//返回申请坐下和离开(广播此消息
+message RedBlackSeatDownResponse{
+	TablePlayerData playerInfo=1;//位置上的玩家数据(成功才收此消息)
+	int32 type=2;//0=坐下,1=离开
+	int32 pos=3;//坐位
+	
+}
+
+//C_S_REDBLACK_BET_MONEY_REQUEST=0x020811;//玩家下注
+message RedBlackBetMoneyRequest{
+	int32 betMoneyIndex=1;//下注的筹码(索引)
+	int32 area=2;//(0-3)红,黑,幸运一击
+}
+
+//S_C_REDBLACK_BET_MONEY_RESPONSE=0x020812;//返回下注消息(广播)
+message RedBlackBetMoneyReponse{
+	repeated BetMoneysData betInfo=1;//下注的数据
+	repeated JettonData jetton=2;//下注的筹码
+	string userId=3;//用户id
+	int32 isContinueBet=4;//是否是续押 1是 0 
+	string remainingMoney=5;//剩余金币量
+}
+
+//S_C_REDBLACK_SNED_CARD_RESPONSE=0x020813;//返回发牌信息(广播)
+message RedBlackSendCardResponse{
+	
+}
+
+//S_C_REDBLACK_ROUND_RESULT_RESPONSE=0x020814;//返回游戏结果
+message RedBlackRoundResultResonse{
+	RoundResultData roundResult=1;//我输赢的钱
+	repeated TablePlayerData seatPlayerList=2;//桌子上的玩家数据
+	repeated HistoryRecordData historyRecord=3;//游戏历史记录
+	repeated int32 stage=4 [packed=true];//个方位的输赢情况 0 红 1 黑 2 幸运方    0 是输  1是赢
+	TablePlayerData winMaxUserInfo=5;//本局赢的最多的玩家
+	string redRatio=6;//游戏历史记录开红赢的百分比
+	string blackRatio=7;//游戏历史记录开黑赢的百分比
+	int32 curRound=8;//总局数
+	SendCardData cardData=9;//发的牌
+	
+	
+}
+
+//S_C_REDBLACK_TABLE_STATUS_RESPONSE=0x020815;//桌子 状态
+message RedBlackTableStatusResponse{
+	TableStatusData status=1;//桌子状态
+}
+
+//C_S_REDBLACK_LEAVE_TABLE_REQUEST=0x020816;//请求离开桌子
+message RedBlackLeaveTableRequest{
+	int32 leaveType=1;//离开类型.1=客户端发送
+}
+
+//S_C_REDBLACK_LEAVE_TABLE_RESPONSE=0x020817;//离开返回
+message RedBlackLeaveTableResponse{
+	string userId=1;//玩家id
+	int32 leaveType=2;//离开类型.1=客户端发送
+}
+//C_S_REDBLACK_CONTINUE_BET_REQUEST=0x020818;//请求续押
+message RedBlackContinueBetRequest{
+}
+
+//S_C_REDBLACK_CONTINUE_BET_RESPONSE=0x020819;//返回续押
+message RedBlackContinueBetResponse{
+	BetMoneysListData betList=1;//押注列表
+	repeated BetMoneyShowData showBetMoneyList=2;//显示下注数据
+	string userId=3;//玩家id
+}
+//C_S_REDBLACK_CANCEL_BET_REQUEST=0x020820;//请求撤销已压的金币
+message RedBlackCancelBetRequest{
+}
+
+//S_C_REDBLACK_CANCEL_BET_RESPONSE=0x020821;//返回撤消的金币
+message RedBlackCancleBetResponse{
+	BetMoneysListData betMoneysList=1;//已下注的金币
+	string userId=2;//取消下注
+	string remainingMoney=3;//撤销人剩余金币量
+}
+
+
+
+//S_C_REDBLACK_SEAT_REMAINING_MONEY=0x020829;//发送座位上玩家下注后剩余金币量
+message RedBlackSeatRemainingMoneyResponse{
+	int32 seat=1;//座位方位
+	string userId=2;//座位上玩家的id
+	string remainingMoney=3;//下注后剩余的钱
+}
+//S_C_REDBLACK_JUDGERE_RECONNECTION_PLAYER=0x020830;//断线重连
+message RedBlackJudgereReConnectionResponse{
+	int32 type=1;//  0 不是断线重连  1 是断线重连
+}
+//C_S_REDBLACK_VOICE_REQUEST=0x020831;//语音请求
+message RedBlackVoiceRequest{
+	string userId=1;//  玩家Id
+	string textContent=2;//  内容
+	string voice=3;//  语音Id+性别
+}
+//S_C_REDBLACK_VOICE_RESPONSE=0x020832;//语音请求返回
+message RedBlackVoiceResponse{
+	string userId=1;//  玩家Id
+	string textContent=2;//  内容
+	string voice=3;//  语音Id+性别
+}

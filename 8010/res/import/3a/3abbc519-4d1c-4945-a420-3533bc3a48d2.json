@@ -1,0 +1,60 @@
+{
+  "__type__": "cc.SpriteAtlas",
+  "_name": "headicon.plist",
+  "_spriteFrames": {
+    "head_0_0": {
+      "__uuid__": "ccphyPqtNOx509wIlJRruF"
+    },
+    "head_0_1": {
+      "__uuid__": "5512wByihOsYckf59KMnsm"
+    },
+    "head_0_2": {
+      "__uuid__": "0bAh6X1/tFR7QQmqdRIpKn"
+    },
+    "head_0_3": {
+      "__uuid__": "0a3lCYjtVBeL4GJ3xTVuNM"
+    },
+    "head_0_4": {
+      "__uuid__": "93rQtbhOlFq4C11zLBwXvJ"
+    },
+    "head_0_5": {
+      "__uuid__": "6f8s3AMApDsKsxpdjdQ1Rk"
+    },
+    "head_0_6": {
+      "__uuid__": "feJKol2RpCebsv8i+yGrLg"
+    },
+    "head_0_7": {
+      "__uuid__": "6btRPBzhNBdYyoWFoFuS9x"
+    },
+    "head_1_0": {
+      "__uuid__": "10Ak5fhmRLhozYKoZfMr69"
+    },
+    "head_1_1": {
+      "__uuid__": "e7mboN3TNGp6De7/9dHIzq"
+    },
+    "head_1_2": {
+      "__uuid__": "f8DKlFYrtNrKoLwLzGzq2Y"
+    },
+    "head_1_3": {
+      "__uuid__": "7dutBOGm9GxKOvF3zccXUB"
+    },
+    "head_1_4": {
+      "__uuid__": "d35C3oWm1AIo84enhVOXGc"
+    },
+    "head_1_5": {
+      "__uuid__": "8eguyY5YhB4KKH4waXR9MW"
+    },
+    "head_1_6": {
+      "__uuid__": "c7ofUFENNNaJ5cglQvv1rz"
+    },
+    "head_1_7": {
+      "__uuid__": "8cPLJcrr1FP66G6mD2/JNF"
+    },
+    "head_line_1": {
+      "__uuid__": "54MJk6ewtEzKWUDKmg9a66"
+    },
+    "head_up": {
+      "__uuid__": "7avLjA9HNLzqhlsz84CCTs"
+    }
+  }
+}

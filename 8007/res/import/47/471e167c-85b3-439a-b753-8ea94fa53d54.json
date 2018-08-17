@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "logo_help",
+    "texture": "f4Qhs9npVJP7ZCcjZ8Qf00",
+    "rect": [
+      0,
+      1,
+      247,
+      66
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      247,
+      68
+    ]
+  }
+}

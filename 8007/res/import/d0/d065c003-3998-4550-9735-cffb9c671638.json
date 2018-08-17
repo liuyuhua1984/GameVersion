@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "pai_41",
+    "texture": "12Mir5LyhG36kuh590zuyO",
+    "rect": [
+      368,
+      334,
+      120,
+      164
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      120,
+      164
+    ]
+  }
+}

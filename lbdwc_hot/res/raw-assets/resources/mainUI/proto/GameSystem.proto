@@ -1,0 +1,40 @@
+syntax = "proto3";
+package com.lyh.protocol;
+option java_package = "com.lyh.protocol.game.chat";
+//C_S_CHAT_IN_ROOM_REQUEST=0x20200;//房间内聊天请求
+message ChatInRoomRequest{
+	 string body=1;//聊天内容	
+         int32 chatType=2;//聊天类型
+}
+//S_C_CHAT_IN_ROOM_RESPONSE=0x20201;//房间内聊天返回
+message ChatInRoomResponse{
+         string openId=1;//发送聊天人的openId
+         string body=2;//聊天内容
+         int32 chatType=3;//聊天类型
+}
+
+//C_S_CHAT_YY_IN_ROOM_REQUEST=0x20202;//房间内语音聊天请求
+message ChatYYInRoomRequest{
+	 bytes body=1;//聊天内容	
+}
+//S_C_CHAT_YY_IN_ROOM_RESPONSE=0x20203;//房间内语音聊天返回
+message ChatYYInRoomResponse{
+         string openId=1;//发送聊天人的openId
+         bytes body=2;//聊天内容
+         int32 sex=3;//1男2女
+}
+
+
+//S_C_VOICE_RESPONSE=0x30010;//声音
+message VoiceResponse{
+	string userId=1;//玩家id
+	string textContent=2;//声音内容
+	string voice=3;//男声,女声
+	string roomId=4;//房间id
+}
+
+//S_C_ROUND_BROADCAST_RESPONSE=0x30011;//轮播
+message RoundBroadcastRespone{
+	int32 type=1;//类型,房间的轮播=1
+    string content=2;//内容
+}

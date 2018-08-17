@@ -1,0 +1,55 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "chipPra",
+    "data": {
+      "__id__": 1
+    },
+    "asyncLoadAssets": null
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "chipPra",
+    "_components": [
+      {
+        "__type__": "cc.Sprite",
+        "node": {
+          "__id__": 1
+        },
+        "_spriteFrame": {
+          "__uuid__": "60nkRi0/ZIh60MynbD58hJ"
+        },
+        "_sizeMode": 0
+      },
+      {
+        "__type__": "25e8ctGDuNNm5OSSSZ8NdgE",
+        "node": {
+          "__id__": 1
+        },
+        "chipPlist": {
+          "__uuid__": "96GiEQJsZGlpK4amow3zH+"
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "abY94q4pFP8JFntof2QNSp"
+      },
+      "fileId": "5ba358d7KJFSaI9aTDWHsHF"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 56,
+      "height": 56
+    },
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": -50,
+      "y": 411
+    }
+  }
+]

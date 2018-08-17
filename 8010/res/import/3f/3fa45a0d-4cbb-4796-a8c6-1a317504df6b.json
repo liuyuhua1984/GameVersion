@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "wzimg_ts_2",
+    "texture": "3654m33CxHtq/mKNzjsZ4a",
+    "rect": [
+      0,
+      0,
+      117,
+      28
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      117,
+      28
+    ]
+  }
+}

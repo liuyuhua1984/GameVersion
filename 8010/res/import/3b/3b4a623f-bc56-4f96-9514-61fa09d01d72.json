@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "site_num_2",
+    "texture": "13TF42KNlJGYmXypWZ0EaV",
+    "rect": [
+      0,
+      0,
+      47,
+      30
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      47,
+      30
+    ]
+  }
+}

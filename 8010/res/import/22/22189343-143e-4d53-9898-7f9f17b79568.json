@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "table_1",
+    "texture": "b5iB1RuWFEzKsLMDjCPQqc",
+    "rect": [
+      0,
+      0,
+      580,
+      202
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      580,
+      202
+    ]
+  }
+}

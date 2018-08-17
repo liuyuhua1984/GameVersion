@@ -1,0 +1,372 @@
+syntax = "proto3";
+package com.lyh.protocol;
+option java_package = "com.lyh.protocol.hall";
+import "PublicData.proto";
+//C_S_HALL_NOTICE_CONTENT_REQUEST=0x30100;//请求公告
+message HallNoticeContentRequest{
+}
+
+//S_C_HALL_NOTICE_CONTENT_RESPONSE=0x30101;//返回公告内容
+message HallNoticeContentResponse{
+	string content=1;//内容
+	string url=2;//官网
+}
+
+//C_S_MOBILE_IDENTIFYING_CODE_REQUEST=0x30122;//请求验证码(全局统一)
+message BindMobileIdentifyingCodeRequest{
+	string mobile=1;//手机号
+}
+
+//S_C_MOBILE_IDENTIFYING_CODE_RESPONSE=0x30123;//返回验证码请求结果(全局统一)
+message BindMobileIdentifyingCodeResponse{
+	int32 result =1;//1=成功,
+}
+
+//C_S_BIND_MOBILE_REQUEST=0x30103;//请求绑定手机号
+message BindMobileRequest{
+	string mobile=1;//手机号
+	string password=2;//密码
+	string identifyingCode=3;//验证码
+}
+
+//S_C_BIND_MOBILE_RESPONSE=0x3104;//返回绑定手机号
+message BindMobileRespose{
+	int32 result =1;//1=成功,
+}
+
+//C_S_QR_CODE_REQUEST=0x30105;//请求我的二维码
+message QrCodeRequest{
+}
+
+//S_C_QR_CODE_RESPONSE=0x30106;//请求我的二维码地址
+message QrCodeResponse{
+	string url=1;//二维码地址
+}
+
+//C_S_POPULARIZE_INFO_REQUEST=0x30107;//请求推广明细
+message PopularizeInfoRequest{
+}
+
+//S_C_POPULARIZE_INFO_RESPONSE=0x30108;//返回推广明细
+message PopularizeInfolResponse{
+	repeated PopularizeDataProto data=1;//推广明细
+	int32 popularizeNum=2;//推广人数
+    string brokerageMoney=3;//总的佣金
+}
+
+//C_S_POPULARIZE_DETAIL_REQUEST=0x30109;//请求推广详情(查看详情)
+message PopularizeDetailRequest{
+}
+
+//S_C_POPULARIZE_DETAIL_RESPONSE=0x3010A;//返回推广详情(查看详情)
+message PopularizeDetailResponse{
+	PopularizeDataProto data=1;//推广明细
+	repeated PopularizeDetailDataProto dataDetail=2;//推广详情
+}
+
+//C_S_PLAY_RETURN_MONEY_REQUEST=0x3010B;//自玩返佣请求
+message PlayReturnMoneyRequest{
+}
+
+//S_C_PLAY_RETURN_MONEY_RESPONSE=0x3010C;//返回自玩返佣数据
+message PlayReturnMoneyResponse{
+	repeated PlayReturnMoneyProto data=1;//自玩返佣数据
+	string returnMoney=2;//返佣总金币
+}
+
+//C_S_CHANGE_HEAD_REQUEST=0x3010D;//修改头像请求
+message ChangeHeadRequest{
+	int32 headIndex=1;//头像索引
+	int32 sex=2;//性别,0=男,1=女
+}
+//S_C_CHANGE_HEAD_RESPONSE=0x3010E;//返回修改的头像
+message ChangeHeadResponse{
+	int32 headIndex=1;//头像索引
+	int32 sex=2;//性别,0=男,1=女
+}
+
+
+	
+//C_S_CHANGE_PASSWORD_REQUEST=0x30124;//请求修改密码
+message ChangePasswrodRequest{
+	string mobile=1;//手机号
+	string password=2;//密码
+	string identifyingCode=3;//验证码
+}
+
+//S_C_CHANGE_PASSWORD_RESPONSE=0x30125;//返回修改密码
+message ChangePasswrodResponse{
+	int32 result=1;//1=修改成功
+}
+
+//C_S_CHANGE_ACCOUNT_REQUEST=0x30126;//请求切换账号
+message ChangeAccountRequest{
+	string mobile=1;//手机号
+	string password=2;//密码
+}
+
+//S_C_CHANGE_ACCOUNT_REPONSE=0x30127;//返回切换账号结果
+message ChangeAccountResponse{
+	int32 result=1;//1=修改成功
+	string mobile=2;//手机号
+	string password=3;//密码
+}
+
+//C_S_OPEN_RANKING_LIST_REQUEST=0x30128;//请求打开排行榜
+message OpenRankingListRequest{
+	int32 rankType=1;//0=财富排行榜
+}
+
+//S_C_OPEN_RANKING_LIST_RESPONSE=0x30129;//返回打开排行榜
+message OpenRankingListResponse{
+	int32 rankType=1;//0=财富排行榜
+	repeated RankingListDataProto data=2;//排行榜数据
+	RankingListDataProto myData=3;//自己的排行榜数据
+}
+
+//C_S_SAFE_STORE_MONEY_REQUEST=0x3012A;//存入金币到保险箱
+message SafeStoreMoneyRequest{
+	string money=1;//存入的金币
+}
+//S_C_SAFE_STORE_MONEY_RESPONSE=0x3012B;//返回存入结果
+message SafeStoreMoneyResponse{
+	int32 result=3;//1=成功,
+	string playerMoney=1;//玩家的金币,result=1时才有值
+	string safeMoney=2;//保险箱的金币,result=1时才有值
+}
+
+//C_S_SAFE_FETCH_MONEY_REQUEST=0x3012C;//取出保险箱金币
+message SafeFetchMoneyRequest{
+	string fetchMoney=1;//取出的金币
+	string password=2;//保险箱密码
+}
+
+//S_C_SAFE_FETCH_MONEY_RESPONSE=0x3012D;//返回取出结果
+message SafeFetchMoneyResponse{
+	int32 result=3;//1=成功,
+	string playerMoney=1;//玩家的金币,result=1时才有值
+	string safeMoney=2;//保险箱的金币,result=1时才有值
+}
+
+
+//C_S_CHANGE_SAFE_PASSWORD_REQUEST=0x3012E;//请求修改密码
+message ChangeSafePasswordRequest{
+	string oldPwd=1;//旧密码
+	string newPwd=2;//新密码
+}
+
+//S_C_CHANGE_SAFE_PASSWORD_RESPONSE=0x3012F;//返回修改结果
+message ChangeSafePasswordResponse{
+	int32 result=1;//1=成功
+}
+
+//C_S_EXCHANGE_BIND_BANK_REQUEST=0x30130;//请求绑定银行
+message ExchangeBindBankRequest{
+	string bankCardNum=1;//银行卡号
+	string bankName=2;//银行名字
+	string bankerName=3;//卡主名字
+}
+//S_C_EXCHANGE_BIND_BANK_RESPONSE=0x30131;//返回绑定银行结果	
+message ExchangeBindBankResponse{
+	int32 result=1;//1=成功
+}	
+
+//C_S_EXCHANGE_BIND_ALIPAY_REQUEST=0x30132;//请求绑定支付宝
+message ExchangeBindAliPayRequest{
+	string aliPayerNum=1;//支付宝账号
+	string aliPayerName=2;//真实名字
+}
+
+//S_C_EXCHANGE_BIND_ALIPAY_RESPONSE=0x30133;//返回绑定支付宝结果
+message ExchangeBindAliPayResponse{
+	int32 result=1;//1=成功
+}
+
+//C_S_OPEN_EXCHANGE_SCREEN_REQUEST=0x30134;//打开兑换界面
+message OpenExchageScreenRequest{
+}
+//S_C_OPEN_EXCHANGE_SCREEN_RESPONSE=0x30135;//返回打开兑换界面
+message OpenExchageScreenResponse{
+	int32 payType=1;//支付类型
+	string playerMoney=2;//玩家金币
+	string safeMoney=3;//保险箱的金币
+	int32 baseMoney=4;//50的倍数
+	int32 brokerageMoney=5;//手续费,2
+}
+
+//C_S_EXCHANGE_MONEY_REQUEST=0x30136;//请求兑换申请
+message ExchageMoneyRequest{
+	int32 payType=1;//支付类型
+	string exchageMoney=2;//玩家金币
+}
+
+//S_C_EXCHANGE_MONEY_RESPONSE=0x30137;//返回兑换申请
+message ExchageMoneyResponse{
+	int32 result=1;//1=成功
+	int32 payType=2;//支付类型
+	string playerMoney=3;//玩家金币
+	string safeMoney=4;//保险箱的金币
+	int32 baseMoney=5;//50的倍数
+	int32 brokerageMoney=6;//手续费,2
+}
+
+//C_S_OPEN_EXCHANGE_LIST_REQUEST=0x30138;//打开兑换申请列表
+message OpenExchageListRequest{
+}
+
+//S_C_OPEN_EXCHANGE_LIST_RESPONSE=0x30139;//返回打开的申请列表
+message OpenExchageListResponse{
+	repeated ExchageListDataProto data=1;//记录列表
+}
+
+
+
+
+//C_S_EXCHANGE_CHANGE_BIND_BANK_REQUEST=0x3013A;//请求修改绑定银行
+message ExchangeChangeBankRequest{
+	string bankCardNum=1;//银行卡号
+	string bankName=2;//银行名字
+	string bankerName=3;//卡主名字
+	string identifyingCode=4;//验证码
+}
+//S_C_EXCHANGE_CHANGE_BANK_RESPONSE=0x3013B;//返回修改绑定银行结果	
+message ExchangeChageBankResponse{
+	int32 result=1;//1=成功
+}	
+
+//C_S_EXCHANGE_CHANGE_ALIPAY_REQUEST=0x3013C;//请求修改绑定支付宝
+message ExchangeChageAliPayRequest{
+	string aliPayerNum=1;//支付宝账号
+	string aliPayerName=2;//真实名字
+	string identifyingCode=4;//验证码
+}
+
+//S_C_EXCHANGE_CHANGE_ALIPAY_RESPONSE=0x3013D;//返回修改绑定支付宝结果
+message ExchageChangeAlipayResponse{
+	int32 result=1;//1=成功
+}
+
+//C_S_OPEN_Msg_INFO_REQUEST=0x30140;//请求打开消息
+message OpenMsgInfoRequest{
+	int32 page=1;//打开的页数,最开始发0
+}
+
+//S_C_OPEN_Msg_INFO_RESPONSE=0x30141;//返回打开消息
+message OpenMsgInfoResponse{
+	int32 page=1;//打开的页数,最开始发0
+	repeated MsgInfoDataProto data=2;//消息数据
+}
+//C_S_CLEAR_MSG_REQUEST=0x30142;//请求清除消息
+message ClearMsgRequest{
+}
+//S_C_CLEAR_MSG_RESPONSE=0x30143;//返回清除消息
+message ClearMsgResponse{
+	int32 result=1;//1=成功
+}
+
+//C_S_OPEN_CUSTOMER_SCREEN_REQUEST=0x30146;//打开客服界面
+message OpenCustomerScreenRequest{
+	
+}
+//S_C_OPEN_CUSTOMER_SCREEN_RESPONSE=0x30147;//打开客服界面
+message OpenCustomerScreenResponse{
+	repeated string content=1;//客户内容
+}
+//C_S_CUSTOMER_SEND_MSG_REQUEST=0x30148;//玩家发送消息给客服
+message CustomerSendMsgRequest{
+	string content=1;//发送的内容
+}
+
+//S_C_CUSTOMER_SEND_MSG_RESPONSE=0x30149;//返回消息给玩家
+message CustomerSendMsgResponse{
+	string content=1;//内容,玩家发送的显示,与客服回的消息
+}
+//C_S_CUSTOMER_CLEAR_MSG_REQUEST=0x3014A;//清除客服信息
+message CustomerClearMsgRequest{
+}
+
+//S_C_CUSTOMER_CLEAR_MSG_RESPONSE=0x3014B;//返回清除客服信息状态
+message CustomerClearMsgResponse{
+	int32 result=1;//1=成功
+}
+
+
+//C_S_OPEN_PROXY_SCREEN_REQUEST=0x30150;//打开代理界面
+message OpenProxyScreenRequest{
+	string wxCode=1;//微信
+}
+
+//S_C_OPEN_PROXY_SCREEN_RESPONSE=0x30151;//打开代理界面
+message OpenProxyScreenResponse{
+	repeated string content=1;//客户内容
+	string wxCode=2;//微信
+	string qq=3;//qq
+}
+
+//C_S_PROXY_SEND_MSG_REQUEST=0x30152;//玩家发送消息给代理
+message RroxySendMsgRequest{
+	string content=1;//发送的内容
+}
+
+//S_C_PROXY_SEND_MSG_RESPONSE=0x30153;//返回消息给玩家
+message ProxySendMsgResponse{
+	string content=1;//内容,玩家发送的显示,与客服回的消息
+}
+//C_S_PROXY_CLEAR_MSG_REQUEST=0x30154;//清除代理聊天信息
+message ProxyClearMsgRequest{
+}
+
+//S_C_PROXY_CLEAR_MSG_RESPONSE=0x30155;//返回清除代理信息状态
+message ProxyClearMsgResponse{
+	int32 result=1;//1=成功
+}
+//C_S_COMPLAIN_PROXY_REQUEST=0x30156;//投诉代理
+message ComplainProxyRequest{
+		string wxCode=2;//微信
+		string content=1;//理由
+}
+
+//S_C_COMPLAIN_PROXY_RESPONSE=0x30157;//返回投诉代理
+message ComplainProxyResponse{
+	int32 result=1;//1=成功
+}
+
+//C_S_OPEN_RECHARGE_SCREEN_REQUEST=0x30158;//打开充值界面
+message OpenRechargeScreenRequest{
+}
+
+//S_C_OPEN_RECHARGE_SCREEN_RESPONSE=0x30159;//打开充值界面
+message OpenRechargeScreenResponse{
+	repeated PayTypeDataProto data=1;//支付类型数据
+}
+
+//C_S_PROXY_LIST_REQUEST=0x3015A;//代理充值列表
+message ProxyListRequest{
+}
+//S_C_PROXY_LIST_RESPONSE=0x3015B;//返回代理充值列表
+message ProxyListReponse{
+	repeated ProxyDataData data=1;//代理数据
+}
+
+//C_S_OPEN_PAY_TYPE_INFO_REQUEST=0x3015C;//打开充值信息
+message OpenPayTypeInfoRequest{
+	int32 payType=1;//充值类型,除代理
+}
+//S_C_OPEN_PAY_TYPE_INFO_RESPONSE=0x3015D;//返回充值信息
+message OpenPayTypeInfoResponse{
+	string rechargeRatio=1;//充值比例 1元=1金币
+	string limitMoney=2;//单笔充值上限
+	string minRMB=3;//最低充值
+	int32 payType=4;//充值类型,除代理
+}
+
+//C_S_RECHARGE_MONEY_REQUEST=0x3016E;//点击充值
+message RechargeMoneyRequest{
+	int32 payType=1;//充值类型,除代理
+	string money=2;//money
+}
+
+//S_C_RECHARGE_MONEY_RESPONSE=0x3016F;//返回充值
+message RechargeMoneyResponse{
+	string rechargeUrl=1;//充值链接
+}

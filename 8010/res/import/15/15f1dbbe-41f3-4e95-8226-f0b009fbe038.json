@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "valuebg",
+    "texture": "0aX9AHiB5JA61QjLhGoLMb",
+    "rect": [
+      5,
+      0,
+      386,
+      32
+    ],
+    "offset": [
+      -2,
+      2
+    ],
+    "originalSize": [
+      400,
+      36
+    ]
+  }
+}

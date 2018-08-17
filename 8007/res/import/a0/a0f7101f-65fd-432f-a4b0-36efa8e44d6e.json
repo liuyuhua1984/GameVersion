@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "flag_1",
+    "texture": "37D+u50YtHXrBSptxKlO73",
+    "rect": [
+      1,
+      2,
+      207,
+      118
+    ],
+    "offset": [
+      -0.5,
+      -1
+    ],
+    "originalSize": [
+      210,
+      120
+    ]
+  }
+}

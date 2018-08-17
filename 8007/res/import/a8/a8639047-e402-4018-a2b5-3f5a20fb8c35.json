@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "effect_on",
+    "texture": "0cZ0H3UBFMra1lK4vqQxZa",
+    "rect": [
+      2,
+      8,
+      42,
+      33
+    ],
+    "offset": [
+      -2.5,
+      0.5
+    ],
+    "originalSize": [
+      51,
+      50
+    ]
+  }
+}

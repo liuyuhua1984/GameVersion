@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "wz_title_szlb",
+    "texture": "0feL6qKUpNHolZVMunBb9z",
+    "rect": [
+      0,
+      0,
+      344,
+      79
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      344,
+      79
+    ]
+  }
+}

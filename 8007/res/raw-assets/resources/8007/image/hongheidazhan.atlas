@@ -1,0 +1,139 @@
+
+hongheidazhan.png
+size: 994,507
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+VS-nan
+  rotate: true
+  xy: 226, 262
+  size: 243, 206
+  orig: 243, 206
+  offset: 0, 0
+  index: -1
+VS-nv
+  rotate: false
+  xy: 2, 17
+  size: 262, 185
+  orig: 262, 200
+  offset: 0, 0
+  index: -1
+baodian
+  rotate: false
+  xy: 732, 190
+  size: 140, 140
+  orig: 140, 140
+  offset: 0, 0
+  index: -1
+ci
+  rotate: false
+  xy: 226, 240
+  size: 333, 20
+  orig: 336, 35
+  offset: 1, 7
+  index: -1
+guangmang
+  rotate: true
+  xy: 2, 204
+  size: 301, 222
+  orig: 301, 222
+  offset: 0, 0
+  index: -1
+huoxing_000
+  rotate: true
+  xy: 874, 5
+  size: 82, 79
+  orig: 179, 179
+  offset: 48, 50
+  index: -1
+huoxing_001
+  rotate: false
+  xy: 874, 169
+  size: 94, 89
+  orig: 179, 179
+  offset: 42, 45
+  index: -1
+huoxing_002
+  rotate: false
+  xy: 874, 260
+  size: 107, 101
+  orig: 179, 179
+  offset: 36, 39
+  index: -1
+huoxing_003
+  rotate: false
+  xy: 429, 4
+  size: 118, 111
+  orig: 179, 179
+  offset: 31, 34
+  index: -1
+huoxing_004
+  rotate: false
+  xy: 429, 117
+  size: 129, 121
+  orig: 179, 179
+  offset: 27, 29
+  index: -1
+huoxing_005
+  rotate: true
+  xy: 770, 363
+  size: 142, 133
+  orig: 179, 179
+  offset: 21, 23
+  index: -1
+huoxing_006
+  rotate: true
+  xy: 727, 2
+  size: 153, 145
+  orig: 179, 179
+  offset: 16, 17
+  index: -1
+huoxing_007
+  rotate: false
+  xy: 560, 2
+  size: 165, 153
+  orig: 179, 179
+  offset: 10, 13
+  index: -1
+huoxing_008
+  rotate: true
+  xy: 266, 65
+  size: 173, 161
+  orig: 179, 179
+  offset: 6, 8
+  index: -1
+huoxing_009
+  rotate: true
+  xy: 434, 328
+  size: 177, 168
+  orig: 179, 179
+  offset: 2, 3
+  index: -1
+huoxing_010
+  rotate: false
+  xy: 604, 332
+  size: 164, 173
+  orig: 179, 179
+  offset: 15, 1
+  index: -1
+s
+  rotate: false
+  xy: 874, 89
+  size: 90, 78
+  orig: 90, 78
+  offset: 0, 0
+  index: -1
+v
+  rotate: true
+  xy: 905, 424
+  size: 81, 87
+  orig: 81, 87
+  offset: 0, 0
+  index: -1
+yuan
+  rotate: false
+  xy: 561, 157
+  size: 169, 169
+  orig: 175, 175
+  offset: 3, 3
+  index: -1

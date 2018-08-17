@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bg_banker",
+    "texture": "a1Q8r/nGdLzrXPuwU81JwP",
+    "rect": [
+      0,
+      0,
+      520,
+      107
+    ],
+    "offset": [
+      0,
+      0.5
+    ],
+    "originalSize": [
+      520,
+      108
+    ]
+  }
+}

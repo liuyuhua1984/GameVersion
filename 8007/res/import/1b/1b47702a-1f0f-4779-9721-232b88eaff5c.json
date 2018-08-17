@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "wzimg_ksxz",
+    "texture": "6bhMb1eeREM42mgr8Z9cS+",
+    "rect": [
+      0,
+      0,
+      190,
+      50
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      190,
+      50
+    ]
+  }
+}

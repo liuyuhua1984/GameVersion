@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "btn_sqsz",
+    "texture": "e8GibXD09Fpq1oJlv/XsnI",
+    "rect": [
+      0,
+      0,
+      90,
+      41
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      90,
+      41
+    ]
+  }
+}

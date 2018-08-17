@@ -1,0 +1,221 @@
+﻿syntax = "proto3";
+
+package com.lyh.protocol;
+option java_package="com.lyh.protocol.cmd";
+
+	//public static int GATE_SERVER = 1;
+	//public static int GAME_SERVER = 2;
+	//public static int WORLD_SERVER = 3;
+	//public static int LOGIN_SERVER = 4;
+	//public static int PUBLIC_SERVER = 5;
+	//public static int LOG_SERVER = 6;
+	//public static int CLIENT = 7;
+	//public static int DB_SERVER = 8;
+	//public static int CENTER_SERVER = 9;
+	
+	
+	//0x020600=斗地主
+	//0x020700=诈金花
+	//0x020800=红黑
+	//0x020900=百家乐
+	//0x020A00=德州扑克
+	//0x020B00=百人牛牛
+	//0x020C00=森林舞会
+	//0x020D00=水果机
+	//0x020E00=龙虎斗
+	//0x020F00=轮庄百人牛牛
+	//0x021000=开门红
+	//0x021100=中发白
+	//0x021200=抢庄牛牛
+	//0x021300=连环夺宝
+
+enum CmdType
+{
+
+  NONE=0;
+//游戏之间内部通信 0x0100000-0xFF00000
+
+//下面是外网的消息
+//协议头不要后16位再取4位二进制=DB_SERVER
+//客户端和游戏服务器通信全部是5位最高位
+	//状态码
+	ERROR_CODE=0xffff;//服务器返回的状态码 
+	HEART_REQUEST=0x1ffff;//客户端心跳消息(每1-2分钟发一次)
+	HEART_RESPONSE=0x1fffe;//客户端心跳消息(每1-2分钟发一次)
+    TIPS_RESPONSE=0xfffe;//tips提示
+
+ 
+	//登录服务器信息
+	C_L_COMMON_LOGIN_REQUEST=0x0001;//普通登录
+	L_C_COMMON_LOGIN_RESPONSE=0x0002;//普通返回
+	
+	C_L_WX_LOGIN_CODE_REQUEST=0x0003;//微信code登录
+	L_C_WX_LOGIN_CODE_RESPONSE=0x0004;//微信code返回
+	
+	C_L_WX_LOGIN_TOKEN_REQUEST=0x0005;//微信token登录
+	L_C_WX_LOGIN_TOKEN_RESPONSE=0x0006;//微信token返回
+	  
+	C_L_GET_LOGIC_IP_REQUEST=0x0007;//获取IP
+	L_C_GET_LOGIC_IP_RESPONSE=0x0008;//获取IP返回
+	
+	C_L_MOBILE_LOGIN_REQUEST=0x0009;//手机登录请求
+	L_C_MOBILE_LOGIN_RESPONSE=0x000A;//返回手机登录
+	
+	C_L_GET_GAME_VERSION_REQUEST=0x000B;//获取版本号
+	L_C_GET_GAME_VERSION_RESPONSE=0x000C;//返回版本号
+	
+	
+	//游戏逻辑服务器信息0x1000
+	C_S_CHECK_PLAYER_REQUEST=0x10000;//请求登录网关服务器
+	S_C_CHECK_PLAYER_RESPONSE=0x20001;//返回玩家数据
+	
+	
+	C_S_PLAYER_DATA_REQUEST=0x80002;//登录成功取游戏角色数据
+	S_C_PLAYER_DATA_RESPONSE=0x80003;//返回玩家数据
+	
+	///////////////////////大厅////////////////////////////////////////
+	C_S_HALL_GAME_LIST_REQUEST=0x30002;//请求大厅游戏列表
+	S_C_HALL_GAME_LIST_RESPONSE=0x30003;//大厅游戏列表
+	
+	C_S_GET_ROOM_LIST_REQUEST=0x30004;//房间列表请求
+	S_C_GET_ROOM_LIST_RESPONSE=0x30005;//返回房间列表
+	
+	C_S_REGISTER_TABLE_REQUEST=0x30006;//玩家拿到进入游戏服务器权限
+	S_C_REGISTER_TABLE_RESPONSE=0x30007;//玩家拿到进入游戏服务器权限返回
+	
+	
+	
+	C_S_HALL_NOTICE_CONTENT_REQUEST=0x30100;//请求公告
+	S_C_HALL_NOTICE_CONTENT_RESPONSE=0x30101;//返回公告内容
+	
+	C_S_MOBILE_IDENTIFYING_CODE_REQUEST=0x30122;//请求验证码(全局统一)
+	S_C_MOBILE_IDENTIFYING_CODE_RESPONSE=0x30123;//返回验证码请求结果(全局统一)
+	
+	C_S_BIND_MOBILE_REQUEST=0x30103;//请求绑定手机号
+	S_C_BIND_MOBILE_RESPONSE=0x3104;//返回绑定手机号
+	
+	/////推广///////////
+	C_S_QR_CODE_REQUEST=0x30105;//请求我的二维码
+	S_C_QR_CODE_RESPONSE=0x30106;//请求我的二维码地址
+	C_S_POPULARIZE_INFO_REQUEST=0x30107;//请求推广明细
+	S_C_POPULARIZE_INFO_RESPONSE=0x30108;//返回推广明细
+	
+	C_S_POPULARIZE_DETAIL_REQUEST=0x30109;//请求推广详情(查看详情)
+	S_C_POPULARIZE_DETAIL_RESPONSE=0x3010A;//返回推广详情(查看详情)
+	
+	C_S_PLAY_RETURN_MONEY_REQUEST=0x3010B;//自玩返佣请求
+	S_C_PLAY_RETURN_MONEY_RESPONSE=0x3010C;//返回自玩返佣数据
+	
+	C_S_CHANGE_HEAD_REQUEST=0x3010D;//修改头像请求
+	S_C_CHANGE_HEAD_RESPONSE=0x3010E;//返回修改的头像
+	
+
+	
+	C_S_CHANGE_PASSWORD_REQUEST=0x30124;//请求修改密码
+	S_C_CHANGE_PASSWORD_RESPONSE=0x30125;//返回修改密码
+	
+	C_S_CHANGE_ACCOUNT_REQUEST=0x30126;//请求切换账号
+	S_C_CHANGE_ACCOUNT_REPONSE=0x30127;//返回切换账号结果
+	
+	C_S_OPEN_RANKING_LIST_REQUEST=0x30128;//请求打开排行榜
+	S_C_OPEN_RANKING_LIST_RESPONSE=0x30129;//返回打开排行榜
+	
+	///////////////////保险箱/////////////////
+	C_S_SAFE_STORE_MONEY_REQUEST=0x3012A;//存入金币到保险箱
+	S_C_SAFE_STORE_MONEY_RESPONSE=0x3012B;//返回存入结果
+	
+	C_S_SAFE_FETCH_MONEY_REQUEST=0x3012C;//取出保险箱金币
+	S_C_SAFE_FETCH_MONEY_RESPONSE=0x3012D;//返回取出结果
+	
+	C_S_CHANGE_SAFE_PASSWORD_REQUEST=0x3012E;//请求保险箱修改密码
+	S_C_CHANGE_SAFE_PASSWORD_RESPONSE=0x3012F;//返回修改保险箱密码结果
+	
+	//////////////兑换///////////////////
+	C_S_EXCHANGE_BIND_BANK_REQUEST=0x30130;//请求绑定银行
+	S_C_EXCHANGE_BIND_BANK_RESPONSE=0x30131;//返回绑定银行结果	
+	
+	C_S_EXCHANGE_BIND_ALIPAY_REQUEST=0x30132;//请求绑定支付宝
+	S_C_EXCHANGE_BIND_ALIPAY_RESPONSE=0x30133;//返回绑定支付宝结果	
+	
+	C_S_OPEN_EXCHANGE_SCREEN_REQUEST=0x30134;//打开兑换界面
+	S_C_OPEN_EXCHANGE_SCREEN_RESPONSE=0x30135;//返回打开兑换界面
+	
+	C_S_EXCHANGE_MONEY_REQUEST=0x30136;//请求兑换申请
+	S_C_EXCHANGE_MONEY_RESPONSE=0x30137;//返回兑换申请
+	
+	C_S_OPEN_EXCHANGE_LIST_REQUEST=0x30138;//打开兑换申请列表
+	S_C_OPEN_EXCHANGE_LIST_RESPONSE=0x30139;//返回打开的申请列表
+	
+	
+	C_S_EXCHANGE_CHANGE_BIND_BANK_REQUEST=0x3013A;//请求修改绑定银行
+	S_C_EXCHANGE_CHANGE_BANK_RESPONSE=0x3013B;//返回修改绑定银行结果	
+	
+	C_S_EXCHANGE_CHANGE_ALIPAY_REQUEST=0x3013C;//请求修改绑定支付宝
+	S_C_EXCHANGE_CHANGE_ALIPAY_RESPONSE=0x3013D;//返回修改绑定支付宝结果	
+	
+	//////////////////消息/////////////////////
+	C_S_OPEN_Msg_INFO_REQUEST=0x30140;//请求打开消息
+	S_C_OPEN_Msg_INFO_RESPONSE=0x30141;//返回打开消息
+	
+	C_S_CLEAR_MSG_REQUEST=0x30142;//请求清除消息
+	S_C_CLEAR_MSG_RESPONSE=0x30143;//返回清除消息
+	
+	///////////////客服/////////////////
+	C_S_OPEN_CUSTOMER_SCREEN_REQUEST=0x30146;//打开客服界面
+	S_C_OPEN_CUSTOMER_SCREEN_RESPONSE=0x30147;//打开客服界面
+	
+	C_S_CUSTOMER_SEND_MSG_REQUEST=0x30148;//玩家发送消息给客服
+	S_C_CUSTOMER_SEND_MSG_RESPONSE=0x30149;//返回消息给玩家
+	C_S_CUSTOMER_CLEAR_MSG_REQUEST=0x3014A;//清除客服信息
+	S_C_CUSTOMER_CLEAR_MSG_RESPONSE=0x3014B;//返回清除客服信息状态
+	
+	//////////////充值///////////////////
+	C_S_OPEN_PROXY_SCREEN_REQUEST=0x30150;//打开代理界面
+	S_C_OPEN_PROXY_SCREEN_RESPONSE=0x30151;//打开代理界面
+	C_S_PROXY_SEND_MSG_REQUEST=0x30152;//玩家发送消息给代理
+	S_C_PROXY_SEND_MSG_RESPONSE=0x30153;//返回消息给玩家
+	C_S_PROXY_CLEAR_MSG_REQUEST=0x30154;//清除代理聊天信息
+	S_C_PROXY_CLEAR_MSG_RESPONSE=0x30155;//返回清除代理信息状态
+	
+	C_S_COMPLAIN_PROXY_REQUEST=0x30156;//投诉代理
+	S_C_COMPLAIN_PROXY_RESPONSE=0x30157;//返回投诉代理
+	
+	C_S_OPEN_RECHARGE_SCREEN_REQUEST=0x30158;//打开充值界面
+	S_C_OPEN_RECHARGE_SCREEN_RESPONSE=0x30159;//返回充值界面
+	
+	C_S_PROXY_LIST_REQUEST=0x3015A;//代理充值列表
+	S_C_PROXY_LIST_RESPONSE=0x3015B;//返回代理充值列表
+	
+	C_S_OPEN_PAY_TYPE_INFO_REQUEST=0x3015C;//打开充值信息
+	S_C_OPEN_PAY_TYPE_INFO_RESPONSE=0x3015D;//返回充值信息
+	
+	C_S_RECHARGE_MONEY_REQUEST=0x3016E;//点击充值
+	S_C_RECHARGE_MONEY_RESPONSE=0x3016F;//返回充值
+	
+	//////////////////声音和聊天全在大厅服务器///////////////////////////////////////
+	S_C_VOICE_RESPONSE=0x30010;//声音
+	S_C_ROUND_BROADCAST_RESPONSE=0x30011;//轮播
+	S_C_CLOSE_SESSION_CLICK=0x30012;//通知客户端收到的客户端立即下线(踢人下线).
+    S_C_PLAYER_MONEY_RESPONSE=0x30013;//设置玩家的钱
+	
+
+	//聊天0x20200
+	C_S_CHAT_IN_ROOM_REQUEST=0x20200;//房间内聊天请求
+	S_C_CHAT_IN_ROOM_RESPONSE=0x20201;//房间内聊天返回
+	C_S_CHAT_YY_IN_ROOM_REQUEST=0x20202;//房间内语音聊天请求
+	S_C_CHAT_YY_IN_ROOM_RESPONSE=0x20203;//房间内语音聊天返回
+
+	
+	
+	
+
+   
+
+	
+	
+	
+
+	
+	
+	
+ }

@@ -1,0 +1,21 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "btn_zpl_h",
+    "texture": "14fcqE7lVIx58ekMqTf7Lu",
+    "rect": [
+      0,
+      0,
+      84,
+      28
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      84,
+      28
+    ]
+  }
+}

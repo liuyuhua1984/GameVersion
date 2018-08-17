@@ -1,0 +1,210 @@
+﻿syntax = "proto3";
+package com.lyh.protocol;
+option java_package = "com.lyh.protocol.game.room.baccara";
+import "BaccaraPublicData.proto";
+//C_S_BACCARA_JOIN_TABLE_REQUEST=0x020901;//玩家请求加入桌子
+message BaccaraJoinTableRequest{
+	 string roomCode=1;//房间code
+	 string userId=2;//用户id
+}
+//S_C_BACCARA_JOIN_TABLE_RESPONSE=0x020902;//返回加入桌子
+message BaccaraJoinTableResponse{
+	int32 tableId=1;//桌子id
+	TableStatusData status=2;//桌子状态
+	repeated string jettons=3;//筹码组
+	string minBetMoney=4;//每局最小下注
+	string maxBetMoney=5;//每局最大下注
+	TablePlayerData bankerInfo=6;//庄家信息
+	int32 bMyReqBanker=7;//自己已申请为1
+	BetMoneysListData betListsData=8;//桌子上已下注的筹码
+	SendCardData cardData=9;//已下发的牌
+	RoundResultData roundResult=10;//输赢结果
+	string minEnterMoney=11;//入场金额
+	int32 isContinueBetMoney=12;//已经续押为1
+	string minBanker=13;//上庄需要的金币量
+	repeated HistoryRecordObject historyRecord=14;//游戏历史记录
+	int32 ownStatus=15;//自己的状态 0 - 未上庄 1-已在上庄列表 2-已是庄家
+	int32 dayCard=16;//天牌
+	int32 banker=17;//庄
+	int32 bankerCorrect=18;//庄对
+	int32 idle=19;//闲
+	int32 idleCorrect=20;//闲对
+	int32 and=21;//和;
+	int32 curRound=22;//总局数
+	repeated TablePlayerData seatPlayerList=23;//桌子上的玩家数据
+	
+}
+
+//S_C_BACCARA_TABLE_SEAT_PLAYER_INFO_LIST_RESPONSE=0x020903;//座位上玩家的信息(广播给自己)
+message BaccaraTableSeatPlayerInfoListResponse{
+	repeated TablePlayerData playerList=1;//座位上的玩家(没有也有发
+}
+
+//S_C_BACCARA_TABLE_PLAYER_INFO_RESPONSE=0x020904;//加入桌子的玩家信息
+message BaccaraTablePlayerInfoResponse{
+	TablePlayerData playerInfo=1;//玩家数据
+}
+
+//S_C_BACCARA_UPDATE_PLAYER_NUM_RESPONSE=0x020905;//更新玩家数量
+message BaccaraUpdataPlayerNumResponse{
+	int32 num=1;//房间内的玩家数量
+}
+
+//C_S_BACCARA_FIGHT_BANKER_REQUEST=0x020906;//申请上庄
+message BaccaraFightBankerRequest{
+}
+
+//S_C_BACCARA_FIGHT_BANKER_RESPONSE=0x020907;//返回申请上庄结果
+message BaccaraFightBankerRespone{
+	int32 result=1;
+}
+
+//S_C_BACCARA_BANKER_RESPONSE=0x020908;//下发庄家信息
+message BaccaraBankerResponse{
+	TablePlayerData bankerInfo=1;//庄家信息
+}
+
+//C_S_BACCARA_SEAT_DOWN_REQUEST=0x020909;//申请坐下和离开
+message BaccaraSeatDownRequest{
+	int32 pos=1;//位置
+	int32 type=2;//0=坐下,1=离开
+}
+
+//S_C_BACCARA_SEAT_DOWN_RESPONSE=0x020910;//返回申请坐下和离开(广播此消息
+message BaccaraSeatDownResponse{
+	TablePlayerData playerInfo=1;//位置上的玩家数据(成功才收此消息)
+	int32 type=2;//0=坐下,1=离开
+	int32 pos=3;//坐位
+	
+}
+
+//C_S_BACCARA_BET_MONEY_REQUEST=0x020911;//玩家下注
+message BaccaraBetMoneyRequest{
+	int32 betMoneyIndex=1;//下注的筹码(索引)
+	int32 area=2;//(0-4)闲,庄,和,闲对,庄对
+}
+
+//S_C_BACCARA_BET_MONEY_RESPONSE=0x020912;//返回下注消息(广播)
+message BaccaraBetMoneyReponse{
+	repeated BetMoneysData betInfo=1;//下注的数据
+	repeated JettonData jetton=2;//下注的筹码
+	string userId=3;//用户id
+	int32 isContinueBet=4;//是否是续押 1是 0 
+	string remainingMoney=5;//剩余金币量
+}
+
+//S_C_BACCARA_SNED_CARD_RESPONSE=0x020913;//返回发牌信息(广播)
+message BaccaraSendCardResponse{
+	SendCardData cardData=1;//牌的数据
+	int32 leftCardVal=2;//闲家的牌点数
+	int32 rightCardVal=3;//庄家的牌点数
+	repeated int32 stage=4 [packed=true];//5个方位的输赢 1表示赢 0表示输    0-闲对 1-庄对2-和 3-闲家 4-庄家
+}
+
+//S_C_BACCARA_ROUND_RESULT_RESPONSE=0x020914;//返回游戏结果
+message BaccaraRoundResultResonse{
+	RoundResultData roundResult=1;//我输赢的钱
+	repeated TablePlayerData seatPlayerList=2;//桌子上的玩家数据
+	repeated HistoryRecordObject historyRecord=3;//游戏历史记录
+	int32 dayCard=4;//天牌
+	int32 banker=5;//庄
+	int32 bankerCorrect=6;//庄对
+	int32 idle=7;//闲
+	int32 idleCorrect=8;//闲对
+	int32 and=9;//和
+	int32 curRound=10;//总局数
+	
+	
+}
+
+//S_C_BACCARA_TABLE_STATUS_RESPONSE=0x020915;//桌子 状态
+message BaccaraTableStatusResponse{
+	TableStatusData status=1;//桌子状态
+}
+
+//C_S_BACCARA_LEAVE_TABLE_REQUEST=0x020916;//请求离开桌子
+message BaccaraLeaveTableRequest{
+	int32 leaveType=1;//离开类型.1=客户端发送
+}
+
+//S_C_BACCARA_LEAVE_TABLE_RESPONSE=0x020917;//离开返回
+message BaccaraLeaveTableResponse{
+	string userId=1;//玩家id
+	int32 leaveType=2;//离开类型.1=客户端发送
+}
+//C_S_BACCARA_CONTINUE_BET_REQUEST=0x020918;//请求续押
+message BaccaraContinueBetRequest{
+}
+
+//S_C_BACCARA_CONTINUE_BET_RESPONSE=0x020919;//返回续押
+message BaccaraContinueBetResponse{
+	BetMoneysListData betList=1;//押注列表
+	repeated BetMoneyShowData showBetMoneyList=2;//显示下注数据
+	string userId=3;//玩家id
+}
+//C_S_BACCARA_CANCEL_BET_REQUEST=0x020920;//请求撤销已压的金币
+message BaccaraCancelBetRequest{
+}
+
+//S_C_BACCARA_CANCEL_BET_RESPONSE=0x020921;//返回撤消的金币
+message BaccaraCancleBetResponse{
+	BetMoneysListData betMoneysList=1;//已下注的金币
+	string userId=2;//取消下注
+	string remainingMoney=3;//撤销人剩余金币量
+}
+
+//C_S_BACCARA_FIGHT_BANKER_LIST=0x020922;//查看上庄列表
+message BaccaraSeeBankerListRequest{
+}
+
+//S_C_BACCARA_FIGHT_BANKER_LIST=0x020923;//返回上庄列表
+message BaccaraSeeBankerListResponse{
+	repeated UserInfoBanker waitBankerQueue=1;//上庄列表
+	int32 status=2;//返回自身的状态 0 - 未上庄 1-已在上庄列表 2-已是庄家
+}
+
+//C_S_BACCARA_FIGHT_BANKER_CANCEL=0x020924;//用户取消上庄
+message BaccaraCancelBankerRequest{
+}
+
+//S_C_BACCARA_FIGHT_BANKER_CANCEL=0x020925;//取消上庄返回
+message BaccaraCancelBankerResponse{
+	int32 result=1;//取消成功返回 1  失败返回 0
+}
+
+//C_S_BACCARA_FIGHT_BANKER_DOWN=0x020926;//用户申请下庄
+message BaccaraDownBankerRequest{
+}
+
+//S_C_BACCARA_FIGHT_BANKER_DOWN=0x020927;//用户申请下庄的返回
+message BaccaraDownBankerResponse{
+	int32 result=1;//0 失败  1 成功
+}
+
+//S_C_BACCARA_CLEAR_HISTORY_COUNT=0x020928;//清理前面100局的数据
+message BaccaraClearHistoryCountResponse{
+	int32 isClear=1;//是否需要清理  0 不清理  1 立马清理
+}
+
+//S_C_BACCARA_SEAT_REMAINING_MONEY=0x020929;//发送座位上玩家下注后剩余金币量
+message BaccaraSeatRemainingMoneyResponse{
+	int32 seat=1;//座位方位
+	string userId=2;//座位上玩家的id
+	string remainingMoney=3;//下注后剩余的钱
+}
+//S_C_JUDGERE_RECONNECTION_PLAYER=0x020930;//断线重连
+message BaccaraJudgereReConnectionResponse{
+	int32 type=1;//  0 不是断线重连  1 是断线重连
+}
+//S_C_BACCARA_VOICE_REQUEST=0x020931;//语音请求
+message BaccaraVoiceRequest{
+	string userId=1;//  玩家Id
+	string textContent=2;//  内容
+	string voice=3;//  语音Id+性别
+}
+//S_C_BACCARA_VOICE_RESPONSE=0x020932;//语音请求返回
+message BaccaraVoiceResponse{
+	string userId=1;//  玩家Id
+	string textContent=2;//  内容
+	string voice=3;//  语音Id+性别
+}

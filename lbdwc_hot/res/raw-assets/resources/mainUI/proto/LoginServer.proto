@@ -1,0 +1,100 @@
+syntax = "proto3";
+package com.lyh.protocol.login;
+option java_package="com.lyh.protocol.login";
+import "PublicData.proto";
+// 普通登录
+// 微信code登录
+// 微信token登录
+
+//ERROR_CODE=0xffff;//服务器返回的错误信息 
+message ErrorCode{
+	 string errorStr=1;//提示信息
+}
+//TIPS_RESPONSE=0xfffe;//tips提示
+message TipsResponse{
+       string tips=1;//提示信息
+}
+
+//C_L_COMMON_LOGIN_REQUEST=0x0001;//普通登录
+message CommonLoginRequest{
+	 string deviceId=2;//设备Id 惟一码
+	 string channelId=3;//渠道号
+	 string deviceType=4;//设备类型,android=1,IOS=2,web=3
+	 string deviceName=5;//设备型号和名称 opp xxx,iphonex7等
+	 string realIP=6;//真实ip
+	 string cvId=7;//粘贴数据
+}
+//L_C_COMMON_LOGIN_RESPONSE=0x0002;//普通返回
+message CommonLoginResponse{
+	 string openId = 2;//openId,成功返回openId
+}
+
+//C_L_WX_LOGIN_CODE_REQUEST=0x0003;//微信code登录
+message WxLoginCodeRequest{
+	 string wxCode = 1; //微信code
+     string openId=2;//openId
+	 string deviceId=3;//设备Id 惟一码
+	 string channelId=4;//渠道号
+	 string deviceType=5;//设备类型,android=1,IOS=2,web=3
+	 string deviceName=6;//设备型号和名称 opp xxx,iphonex7等
+	 string realIP=7;//真实ip
+	  string cvId=8;//粘贴数据
+}
+//L_C_WX_LOGIN_CODE_RESPONSE=0x0004;//微信code返回
+message WxLoginCodeResponse{
+	 int32 respCode = 1;//1表示成功其他表示失败
+	 string wxToken = 2; //微信token
+	 string openId = 3;//openId
+}
+
+//C_L_WX_LOGIN_TOKEN_REQUEST=0x0005;//微信token登录
+message WxLoginTokenRequest{
+	 string wxToken = 1; //微信token
+	 string openId = 2;//openId
+}
+
+//L_C_WX_LOGIN_TOKEN_RESPONSE=0x0006;//微信token返回
+message WxLoginTokenReponse{
+	 int32 respCode = 1;//1表示成功其他表示失败
+	 string wxToken = 2; //微信token
+	 string openId = 3;//openId
+}
+
+//C_L_GET_LOGIC_IP_REQUEST=0x0007;//获取IP
+message GetLogicIpRequest{
+	 string openId = 1;//openId
+}
+
+//L_C_GET_LOGIC_IP_RESPONSE=0x0008;//获取IP返回
+message GetLogicIpResponse{
+	
+	 string userId = 2;//玩家id
+	 repeated ServerListDataProto sList=3;//服务器列表
+	 string token=4;//令牌信息防止非法登录
+}
+
+//C_L_MOBILE_LOGIN_REQUEST=0x0009;//手机登录请求
+message MobileLoginRequest{
+	string mobile=1;//手机号
+	string password=2;//密码
+	string realIP=3;//真实ip
+}
+
+//L_S_MOBILE_LOGIN_RESPONSE=0x000A;//返回手机登录
+message MobileLoginResponse{
+	string openId = 2;//openId,成功返回openId
+}
+
+//C_L_GET_GAME_VERSION_REQUEST=0x000B;//获取版本号
+message GetGameVersionRequest{
+	string hotVersion=1;//热更新版本
+	int32 downloadVersion=2;//下载APK,IOS
+	string channelId=3;//渠道号
+	string deviceType=4;//android=1,IOS=2,web=3
+}
+
+//L_C_GET_GAME_VERSION_RESPONSE=0x000C;//返回版本号
+message GetGameVersionResponse{
+	int32 versionType=1;//下载 1=大更,2=热更,0=不更
+	string hotDownloadUrl=2;
+}
