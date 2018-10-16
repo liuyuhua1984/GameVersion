@@ -1,1 +1,1 @@
-{"hotVersion":"1.0.0","hotAddress":"http://192.168.0.55/GameVersion/lbdwc_hot/","downloadVersion":"1","androidDownloadAddress":"http://192.168.0.123:8080/download/apk_file","iosDownloadAdress":"http://192.168.0.123:8080","gameDownloadList":["8017","8007"]}
+{"hotVersion":"1.2.5","hotAddress":"http://xxxx/GameVersion/lbdwc_hot/","downloadVersion":"4","androidDownloadAddress":"http://xxxx/GameVersion/app.apk","iosDownloadAdress":"https://xxx/newDown/index.html","gameDownloadList":["8012","8018"],"eFlag":1,"msg":"进入吧"}
